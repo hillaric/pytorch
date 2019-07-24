@@ -12,7 +12,7 @@ class DefaultConfig(Object):
     
     batch_size = 128
     use_gpu = True
-    num_workers = 4
+    num_workers = 0
     print_freq = 20
     debug_file = '/tmp/debug'
     result_file = 'result.csv'
@@ -21,4 +21,3 @@ class DefaultConfig(Object):
     lr = 0.1
     lr_decay = 0.95
     weight_decay = 1e-4
-    
