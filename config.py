@@ -1,3 +1,7 @@
+# 可配置的参数主要包括：
+# --数据集参数（文件路径，batch_size）
+# --训练参数(学习率,训练epoch)
+# --模型参数
 class DefaultConfig(Object):
     env = 'default'
     model = 'AlexNet'
