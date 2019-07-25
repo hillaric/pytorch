@@ -21,3 +21,17 @@ class DefaultConfig(Object):
     lr = 0.1
     lr_decay = 0.95
     weight_decay = 1e-4
+    
+    def parse(self, kwargs):
+    for k,v in kwargs.items():
+        if not hasattr(self, k):
+            warnings.warn('warning: opt has not atrribute %s' % k)
+        setattr(self,k,v)
+    opt.device = tensor.device('cuda') if opt.use_gpu else tensor.device('cpu')
+    
+    print('user config')
+    for k, v in self.__class__.__dict__.items():
+        if not k.startswith('_'):
+            print(k, getattr(self,k))
+            
+opt = DefaultConfig()
