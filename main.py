@@ -5,6 +5,8 @@ import torch.nn as nn
 import models
 import torch.optim as optim
 import torchnet.meter as meter
+from config import DefalutConfig
+
 # main函数
 def train():
     # 获取数据
@@ -22,18 +24,18 @@ def train():
         
     # 定义损失函数以及优化函数
     criterion = nn.CrossEntropyLoss()
-    lr = 0.001
-    weight_decay = 0.95
+    lr = opt.lr
+    weight_decay = opt.weight_decay
     optimizer = optim.SGD(model.parameters(),
                          lr,
                          weight_decay)
     
     # 定义评估函数
     loss_meter = meter.AverageValueMeter()
-    previous_loss = 1e100
+    previous_loss = opt.previous_loss
     
     # 开始训练
-    epochs = 10
+    epochs = opt.epochs
     for epoch in range(epochs):
         loss_meter.reset()
         
